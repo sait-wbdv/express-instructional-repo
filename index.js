@@ -1,9 +1,13 @@
 "use strict";
 
 const express = require("express");
-const server = express();
+const app = express();
 const port = 3000;
 
-server.listen(port, () => {
-  console.log(`server is listening on http://localhost:${port}`);
+app.get("/", (req, res) => {
+  res.send("Hello There, from Express Server");
+});
+
+app.listen(port, () => {
+  console.log(`app is listening on http://localhost:${port}`);
 });
