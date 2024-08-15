@@ -2,7 +2,7 @@
 
 const express = require("express");
 const path = require("node:path");
-const logger = require("./logger");
+const logger = require("./middleware/logger");
 const app = express();
 const port = 3000;
 
@@ -15,7 +15,6 @@ app.get("/", (req, res) => {
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "pages", "about.html"));
 });
-app.get("static-file", (req, res) => {});
 
 app.get("/api/numbers", (req, res) => {
   res.send([1, 2, 3, 4]);
