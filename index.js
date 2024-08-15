@@ -1,10 +1,11 @@
 "use strict";
 
 const express = require("express");
+const path = require("node:path");
 const app = express();
 const port = 3000;
 
-/* --- Middleware examples --- */
+/* --- 1. Middleware examples --- */
 
 // Custom logger
 function currentTime() {
@@ -24,6 +25,12 @@ function logger(req, res, next) {
 }
 
 app.use(logger);
+
+// 2. Serve static assets makes it so you can reach your images, css files, and other assets
+
+app.use(express.static(path.join(__dirname, "public")));
+
+// this will allow you to go to http://localhost:3000/penguin.jpg
 
 /* --- Routing code --- */
 app.get("/", (req, res) => {
