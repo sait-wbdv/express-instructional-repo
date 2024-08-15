@@ -4,14 +4,23 @@ const express = require("express");
 const path = require("node:path");
 const logger = require("./middleware/logger");
 const app = express();
+const router = express.Router();
 const port = 3000;
 
 app.use(logger);
+
+// middleware for form data
+app.use(express.urlencoded({ extended: true }));
 
 /* --- Routing code --- */
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "pages", "index.html"));
 });
+app.post("/", (req, res) => {
+  const message = req.body.message;
+  res.send(`You submitted: ${message}`);
+});
+
 app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "pages", "about.html"));
 });
