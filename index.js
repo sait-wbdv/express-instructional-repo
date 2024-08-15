@@ -16,8 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "pages", "index.html"));
 });
+
 app.post("/", (req, res) => {
   const message = req.body.message;
+  if (!message) {
+    res.status(400).send("Message is required");
+    return;
+  }
   res.send(`You submitted: ${message}`);
 });
 
@@ -27,6 +32,14 @@ app.get("/about", (req, res) => {
 
 app.get("/api/numbers", (req, res) => {
   res.send([1, 2, 3, 4]);
+});
+
+app.use((req, res, next) => {
+  res.status(404).send("Page Not Found"); // Or render a custom 404 page
+});
+app.use((err, req, res, next) => {
+  console.error(`Unhandled Error: ${err}`);
+  res.status(500).send("Internal Server Error");
 });
 
 app.listen(port, () => {
