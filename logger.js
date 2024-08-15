@@ -1,7 +1,7 @@
 /* --- Middleware examples --- */
 
 // Custom logger
-function currentTime() {
+function getCurrentTime() {
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
@@ -11,7 +11,7 @@ function currentTime() {
 }
 
 function logger(req, res, next) {
-  console.log(`Time: ${currentTime()}`);
+  console.log(`Time: ${getCurrentTime()}`);
   console.log(`method: ${req.method}`);
   console.log(`path: ${req.originalUrl}`);
   next();
