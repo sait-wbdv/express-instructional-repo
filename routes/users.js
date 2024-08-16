@@ -2,13 +2,12 @@
 const express = require("express");
 const slugify = require("../utils/slugify");
 const users = require("../data/users.json");
-const isValidUserId = require("../utils/isValidUserId");
-const isValidUserName = require("../utils/isValidUserName");
+const getUserById = require("../utils/getUserById");
+const getUserByName = require("../utils/getUserByName");
 const router = express.Router();
 
 router.get("/:userId", (req, res) => {
-  const userId = parseInt(req.params.userId);
-  const user = users.find((user) => user.id === userId);
+  const user = getUserById(req.params.userId, users);
   if (user) {
     const html = `
     <!DOCTYPE html>
@@ -29,11 +28,14 @@ router.get("/:userId", (req, res) => {
 });
 
 router.get("/user/:userName", (req, res) => {
-  const userName = slugify(req.params.userName);
+  // const userName = slugify(req.params.userName);
+  /*
   const user = users.find((user) => {
     const slugifiedName = slugify(user.name);
     return slugifiedName === userName;
   });
+  */
+  const user = getUserByName(req.params.userName, users);
   if (user) {
     const html = `
     <!DOCTYPE html>
