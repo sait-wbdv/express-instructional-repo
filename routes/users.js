@@ -1,9 +1,10 @@
 "use strict";
+
 const express = require("express");
-const slugify = require("../utils/slugify");
-const users = require("../data/users.json");
 const getUserById = require("../utils/getUserById");
 const getUserByName = require("../utils/getUserByName");
+const users = require("../data/users.json");
+
 const router = express.Router();
 
 router.get("/:userId", (req, res) => {
