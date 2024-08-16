@@ -9,6 +9,7 @@ const {
   aboutRouter,
   numbersRouter,
   usersRouter,
+  usersApiRouter,
 } = require("./routes");
 
 const app = express();
@@ -24,7 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", homeRouter);
 app.use("/about", aboutRouter);
 app.use("/api/numbers", numbersRouter);
-app.use("/api/users", usersRouter);
+app.use("/users/", usersRouter);
+app.use("/api/users", usersApiRouter);
 // Error handlers
 app.use((req, res) => {
   res.status(404).send("Page Not Found"); // Or render a custom 404 page

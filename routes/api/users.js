@@ -19,7 +19,7 @@ router.get("/:userId", (req, res) => {
   }
 });
 
-router.get("/name/:userName", (req, res) => {
+router.get("/user/:userName", (req, res) => {
   const userName = slugify(req.params.userName);
   const user = users.find((user) => {
     const slugifiedName = slugify(user.name);
@@ -31,4 +31,5 @@ router.get("/name/:userName", (req, res) => {
     res.status(404).send("User Not Found");
   }
 });
+
 module.exports = router;
