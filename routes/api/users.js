@@ -36,4 +36,16 @@ router.get("/:userId", (req, res) => {
   }
 });
 
+router.get("/name/:userName", (req, res) => {
+  const userName = req.params.userName;
+  const user = users.find((user) => {
+    const name = user.name.toLowerCase().replace(/\s+/g, "-");
+    return name === userName;
+  });
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404).send("User Not Found");
+  }
+});
 module.exports = router;
