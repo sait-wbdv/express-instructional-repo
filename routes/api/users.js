@@ -37,10 +37,10 @@ router.get("/:userId", (req, res) => {
 });
 
 router.get("/name/:userName", (req, res) => {
-  const userName = req.params.userName;
+  const userName = slugify(req.params.userName);
   const user = users.find((user) => {
-    const name = slugify(user.name);
-    return name === userName;
+    const slugifiedName = slugify(user.name);
+    return slugifiedName === userName;
   });
   if (user) {
     res.json(user);
