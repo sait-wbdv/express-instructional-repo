@@ -1,7 +1,7 @@
 "use strict";
 
 const express = require("express");
-const logger = require("./middleware/logger");
+const logger = require("./utils/logger");
 
 // import routes
 const {

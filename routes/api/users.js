@@ -1,8 +1,8 @@
 "use strict";
 
 const express = require("express");
+const slugify = require("../../utils/slugify");
 const router = express.Router();
-
 const users = [
   {
     id: 0,
@@ -39,7 +39,7 @@ router.get("/:userId", (req, res) => {
 router.get("/name/:userName", (req, res) => {
   const userName = req.params.userName;
   const user = users.find((user) => {
-    const name = user.name.toLowerCase().replace(/\s+/g, "-");
+    const name = slugify(user.name);
     return name === userName;
   });
   if (user) {
