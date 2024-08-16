@@ -28,13 +28,6 @@ router.get("/:userId", (req, res) => {
 });
 
 router.get("/user/:userName", (req, res) => {
-  // const userName = slugify(req.params.userName);
-  /*
-  const user = users.find((user) => {
-    const slugifiedName = slugify(user.name);
-    return slugifiedName === userName;
-  });
-  */
   const user = getUserByName(req.params.userName, users);
   if (user) {
     const html = `
