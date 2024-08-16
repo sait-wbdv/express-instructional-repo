@@ -2,25 +2,8 @@
 
 const express = require("express");
 const slugify = require("../../utils/slugify");
+const users = require("../../data/users.json");
 const router = express.Router();
-const users = [
-  {
-    id: 0,
-    name: "Judit Polgar",
-  },
-  {
-    id: 1,
-    name: "Magnus Carlsen",
-  },
-  {
-    id: 2,
-    name: "Garry Kasparov",
-  },
-  {
-    id: 3,
-    name: "Mikhail Botvinnik",
-  },
-];
 
 router.get("/", (req, res) => {
   return res.json(users);
