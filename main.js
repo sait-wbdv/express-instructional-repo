@@ -21,10 +21,10 @@ app.use("/about", aboutRouter);
 app.use("/api/numbers", numbersRouter);
 
 // Error handlers
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).send("Page Not Found"); // Or render a custom 404 page
 });
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(`Unhandled Error: ${err}`);
   res.status(500).send("Internal Server Error");
 });
