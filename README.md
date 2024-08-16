@@ -25,4 +25,6 @@ Server routes are the pathways of your website/application. They define how a se
    - run `node main.js` (or whatever your server file is called)
    - pro tip: create your own script to run the server in your package.json file `"dev": "node main.js"
 
-##
+## 2. Server Middleware
+
+Middleware intercepts requests before they reach the route handlers and allow you to do things with teh data before it's processed. This can be used to improve your code organization and functionality.
