@@ -1,9 +1,11 @@
 const homeRouter = require("./home");
 const aboutRouter = require("./about");
 const numbersRouter = require("./api/numbers");
+const usersRouter = require("./api/users");
 
 module.exports = {
-  homeRouter,
   aboutRouter,
+  homeRouter,
   numbersRouter,
+  usersRouter,
 };
