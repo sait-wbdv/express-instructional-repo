@@ -4,7 +4,12 @@ const express = require("express");
 const logger = require("./middleware/logger");
 
 // import routes
-const { homeRouter, aboutRouter, numbersRouter } = require("./routes");
+const {
+  homeRouter,
+  aboutRouter,
+  numbersRouter,
+  usersRouter,
+} = require("./routes");
 
 const app = express();
 const port = 3000;
@@ -19,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", homeRouter);
 app.use("/about", aboutRouter);
 app.use("/api/numbers", numbersRouter);
-
+app.use("/api/users", usersRouter);
 // Error handlers
 app.use((req, res) => {
   res.status(404).send("Page Not Found"); // Or render a custom 404 page
